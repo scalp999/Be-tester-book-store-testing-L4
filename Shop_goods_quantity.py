@@ -14,8 +14,7 @@ log_btn = driver.find_element_by_xpath("//*[@value = 'Login']").click()
 shop = driver.find_element_by_partial_link_text("Shop").click()
 cat_html = driver.find_element_by_link_text("HTML").click()
 
-# Далее идет три разных теста.Я долго думал, какую бы проверку сделать, начал с самой простой: проверить наличие трех книг на странице
-# через проверку наличия трех разных элементов "добавить в корзину" по ID
+#Verficiation for the desired books on the page 
 
 first_book = driver.find_element_by_xpath("//*[@data-product_id = '181']")
 second_book = driver.find_element_by_xpath("//*[@data-product_id = '182']")
@@ -25,9 +24,7 @@ if first_book and second_book and third_book is not None:
 else:
     print ("The number of books in HMTL category is not 3")
 
-# Мне показалось, что этот тест, скорее является подбором к результату, чем реальная проверка.
-# Но за что бы зацепиться, я не нашел.Также можно проверить, что на странице
-# присутствуют именно необходимые три книги (здесь проверяется по наличию их картинок с текстом названия)
+
 
 f_book = driver.find_element_by_xpath("//*[@title = 'Mastering HTML5 Forms']")
 f_book_title = f_book.get_attribute('title')
@@ -40,8 +37,8 @@ th_book_title = th_book.get_attribute('title')
 assert th_book_title == "Thinking in HTML"
 print("There are three books: ",f_book_title, ', ', s_book_title,', ', th_book_title)
 
-# Можно протестировать теперь наличие названия и совпадения названий книг на странице, что они присутсвуют
-# По заголовку под картинкой
+
+# Name test and picture check
 
 book1 = WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.XPATH, "//h3[text()='HTML5 Forms']"), "HTML5 Forms"))
 time.sleep(1)
