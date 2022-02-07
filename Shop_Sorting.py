@@ -34,9 +34,9 @@ selector = driver.find_element_by_css_selector("select.orderby")
 
 value_selector_check = selector.get_attribute("value")
 if value_selector_check == "price-desc":
-    print ("Сортировка в данный момент от большего к меньшему")
+    print ("Ascending sorting was chosen")
 else:
-    print("Выбрана другая сортировка")
+    print("Other sorting method was chosen")
 # or
 
 assert value_selector_check == 'price-desc'
