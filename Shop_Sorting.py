@@ -14,12 +14,12 @@ log_btn = driver.find_element_by_xpath("//*[@value = 'Login']").click()
 shop = driver.find_element_by_partial_link_text("Shop").click()
 selector = driver.find_element_by_css_selector("select.orderby")
 value_selector_check = selector.get_attribute('value')
-# Первый вариант проверки статуса выбраного в селекторе
+# First option to check the status of selector
 if value_selector_check == "menu_order":
     print("Default order is selected")
 else:
     print("Other order was selected")
-# Второй вариант проверки статуса селектора
+# Second option to check the selector
 assert value_selector_check == "menu_order"
 
 # or
@@ -30,14 +30,14 @@ select = Select(selector)
 select.select_by_value('price-desc')
 selector = driver.find_element_by_css_selector("select.orderby")
 
-# Опять делаем обе проверки статуса селектора
+# Lets do both checks again
 
 value_selector_check = selector.get_attribute("value")
 if value_selector_check == "price-desc":
     print ("Сортировка в данный момент от большего к меньшему")
 else:
     print("Выбрана другая сортировка")
-# или
+# or
 
 assert value_selector_check == 'price-desc'
 
