@@ -1,2 +1,1 @@
-# Be-tester-book-store-testing-L4
-# Automation lesson Be-Tester school
+Different small projects for automation with Selenium webdriver in Python
