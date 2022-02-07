@@ -21,17 +21,12 @@ else:
 assert basket_content_check == "1 Item"
 # or EC
 basket_content_check_EC = WebDriverWait(driver,10).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR,".cartcontents"), "1 Item"))
-# Я не заметил вначале , что нужно делать только assert поэтому делаем дальше assert для цены
 price = driver.find_element_by_css_selector(".wpmenucart-contents .amount")
 price_check = price.text
-# Далее тест падает тк в задании стоит проверить цену в "₹180.00", но она измениалсь на 280, чтоб тест не падал я оставил корректный вариант
-# assert price_check == "₹180.00"
 assert price_check == "₹280.00"
 basket = driver.find_element_by_css_selector("span.amount").click()
-# Проверка отображения стоимости по EC, через ожидаемые значения цены
 sub_price_check = WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.XPATH, "//*[@data-title = 'Subtotal']") , "₹280.00"))
 total_price_check = WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".order-total td"), "₹294.00"))
-# Потом поразмыслив, что для теста все время придется подбирать цену, решил что можно добавить и так, оба варианта рабочие:
 total_price_check = WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".order-total td"), "₹"))
 sub_price_check = WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.XPATH, "//*[@data-title = 'Subtotal']") , "₹"))
 driver.quit()
